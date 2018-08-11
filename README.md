@@ -32,7 +32,13 @@ interesting information easily.
 - As a editor I want to have option to easy add a content so I can save time in
 future.
 
-- link to wireframes, diagrams
+### UX Mind map
+
+![alt text](https://github.com/Migacz85/trip/blob/master/docs/mindmap.png)
+
+### Wireframe
+
+![alt text](https://github.com/Migacz85/trip/blob/master/docs/wireframe.png)
 
 ## Features
 
@@ -94,8 +100,6 @@ If you want to run code locally run:
 git clone https://github.com/Migacz85/trip.git
 ```
 
-## Credits
-
 ### Content
 
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
@@ -105,6 +109,3 @@ git clone https://github.com/Migacz85/trip.git
 - All the photos where made by me, so copyrights belongs to me.
 If you are interested in using them - drop me an email migacz85@gmail.com.
 
-### Acknowledgements
-
-- I received inspiration for this project from X

@@ -1,8 +1,8 @@
-a, p, h1, h2 {
+a, p, h1, h2, h3  {
   color: white;
   padding: 0;
   margin: 0;
-
+  padding:10px;
 }
 a:hover {
   color:#abd3ff;
@@ -12,6 +12,8 @@ h2 {
   padding:10px;
 font-family: 'Cinzel', cursive, sans-serif;
 }
+
+
 
 ul {
   list-style-type: none;
@@ -31,6 +33,11 @@ ul {
 footer .logo {
   position:static;
 }
+.wrapper {
+height:100%;
+}
+
+
 body {
 
   font-family: 'Montserrat', sans-serif;
@@ -111,6 +118,7 @@ main {
 
   padding: 60px 20px 60px;
   width: 100%;
+
   text-align: justify;
   text-justify: inter-word;
   clear: both;
@@ -130,11 +138,11 @@ main {
 }
 
 .picture {
-  background-image: url("../pic/a.jpg");
+  background-image: url("../pic/plane.jpg");
   background-size: cover;
-  height: 350px;
-  width: 100%;
-  float: left;
+  background-position: right;
+  min-height:350px;
+  clear:both;
 }
 
 .picture1 {
@@ -142,7 +150,7 @@ main {
   background-size: cover;
   height: 350px;
   width: 100%;
-  float: left;
+  /* float: left; */
 }
 
 .picture2 {
@@ -150,7 +158,7 @@ main {
   background-size: cover;
   height: 350px;
   width: 100%;
-  float: left;
+  /* float: left; */
 }
 
 .picture3 {
@@ -158,13 +166,21 @@ main {
   background-size: cover;
   height: 350px;
   width: 100%;
-  float: left;
+  /* float: left; */
 }
 footer {
   background-color: var(--gray);
   padding: 50px;
   text-align: center;
 }
+
+
+/* bootstrap */
+.container-fluid {
+  width:100%;
+  height:100%;
+}
+
 
 /* styles for tablet */
 
@@ -209,17 +225,11 @@ text-shadow: 0px 0px 5px black;
   height: 120vh;
 }
 
-  .picture, .picture1, .picture2, .picture3 {
-    background-size: cover;
-    height: 350px;
-    width: 50%;
-    float: left;
-  }
   .text-box {
     padding: 40px;
     width: 50%;
     height: 350px;
-    float: left;
+
     clear: both;
      display: table;
 
@@ -231,7 +241,7 @@ text-shadow: 0px 0px 5px black;
 
   }
   .right {
-    float: right;
+    /* float: right; */
   }
 
 }

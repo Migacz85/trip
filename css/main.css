@@ -9,6 +9,7 @@ a:hover {
 }
 
 h2 {
+
   padding:10px;
 font-family: 'Cinzel', cursive, sans-serif;
 }
@@ -146,26 +147,39 @@ main {
 }
 
 .picture1 {
-  background-image: url("../pic/a.jpg");
+  background-image: url("../pic/seller.jpg");
   background-size: cover;
-  height: 350px;
+background-position: center;
+  min-height:350px;
   width: 100%;
   /* float: left; */
 }
 
-.picture2 {
-  background-image: url("../pic/a.jpg");
+.rambla {
+  background-image: url("../pic/rambla.jpg");
   background-size: cover;
-  height: 350px;
-  width: 100%;
+    min-height:350px;
+  width: 100%
   /* float: left; */
 }
 
-.picture3 {
-  background-image: url("../pic/a.jpg");
+.beach {
+  background-image: url("../pic/beach.jpg");
+  background-position: center;
   background-size: cover;
-  height: 350px;
+  min-height: 350px;
   width: 100%;
+
+  /* float: left; */
+}
+
+.eulalia {
+  background-image: url("../pic/eulalia.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 350px;
+  width: 100%;
+
   /* float: left; */
 }
 footer {
@@ -174,13 +188,64 @@ footer {
   text-align: center;
 }
 
+.video {
+  height:100%;
+  width: 100%;
+  min-height:350px;
+
+  padding-left:0;
+  padding-right:0;
+}
 
 /* bootstrap */
 .container-fluid {
   width:100%;
   height:100%;
 }
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+/* .no-padding {
+  padding-left:0;
+  padding-right:0;
+} */
+.col {
+  padding-top: 50px;
+}
 
+/* animation for pictures */
+p#cf7_controls {
+  text-align:center;
+}
+#cf7_controls span {
+  padding-right:2em;
+  cursor:pointer;
+}
+#cf7 {
+  position:relative;
+  height:281px;
+  width:450px;
+  margin:0 auto 10px;
+}
+#cf7 img {
+  height:281px;
+  width:450px;
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity:0;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+
+#cf7 img.opaque {
+  opacity:1;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=1);
+}
+/* animation for pictures */
 
 /* styles for tablet */
 

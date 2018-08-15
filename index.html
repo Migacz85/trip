@@ -26,6 +26,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
 </head>
 
+
 <body>
   <header>
     <nav class='navigation'>
@@ -49,9 +50,10 @@
   </header>
 
   <main class='info'>
-    <nav class='navigation-article'>
+    <nav id='navigation-article'>
       <div>
         <ul>
+          <span onclick="myFunction2()"> <b> +</b>  </span> <span onclick="myFunction()"> <b>-</b> </span>
           <li><a href="#start">"Start the trip !"</a></li>
           <li><a href="#seller">"Local seller"</a></li>
           <li><a href="#rambla">"Rambla De Mar"</a></li>
@@ -61,6 +63,15 @@
         </ul>
       </div>
     </nav>
+    <script>
+      function myFunction() {
+        document.getElementById('navigation-article').style.cssText = 'height:25px; width:120px; background:transparent; color:black;';
+      }
+
+      function myFunction2() {
+        document.getElementById('navigation-article').style.cssText = 'height:100%; width:100%;';
+      }
+    </script>
     <!-- piture on right text on left -->
     <div class="container-fluid no-padding">
       <div class="row">
@@ -123,20 +134,19 @@
           </p>
 
           <audio controls>
-            <source src="/audio/four.mp4" type="audio/ogg">
+            <source src="../audio/four.mp4" type="audio/ogg">
             Your browser does not support the audio element.
             </audio>
 
           <audio controls>
-            <source src="/audio/two.mp4" type="audio/ogg">
+            <source src="../audio/two.mp4" type="audio/ogg">
             Your browser does not support the audio element.
             </audio>
 
           <audio controls>
-              <source src="/audio/one.mp4" type="audio/ogg">
+              <source src="../audio/one.mp4" type="audio/ogg">
               Your browser does not support the audio element.
               </audio>
-
           <p>day 3</p>
         </div>
         <div class="col-md">
@@ -144,47 +154,32 @@
         </div>
       </div>
       <div class="row">
-
         <div id="santa-eulalia" class="col-md text-justify bronze col-md-push-6">
           <h2>Cathedral de la Santa Eulalia</h2>
           <p>
             Then we got to the "Cathedral de la Santa Eulalia". And what I need to tell you, this place was truly magical and beautiful. Some guy was staying there and playing on his guitar really relaxing and very melodic music. It was lovely even just to sit there
             and enjoy the moment. If you planning to visit Barcelona is a -must- .
-
           </p>
           <p>day 3</p>
         </div>
         <div class="col-md eulalia col-md-pull-6">
         </div>
       </div>
-
       <!-- closing div of container fluid-->
     </div>
 
-
-    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/RsO20tsuzvI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
     <section>
       <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95815.66475609282!2d2.0323701167332544!3d41.36888048689157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona%2C+Spain!5e0!3m2!1sen!2sie!4v1533997231266"
         width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
     </section>
     </div>
-
-
-
     </footer>
-
   </main>
-
   <footer>
     <ul>
       <li class='logo'><a href="index.html">Trip Journal</a></li>
       <li>© Marcin Mrugacz</li>
     </ul>
-
-
-
-
-
 </body>
 
 </html>

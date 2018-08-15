@@ -1,3 +1,4 @@
+/* tags */
 a, p, h1, h2, h3  {
   color: white;
   padding: 0;
@@ -9,21 +10,35 @@ a:hover {
 }
 
 h2 {
-
   padding:10px;
-font-family: 'Cinzel', cursive, sans-serif;
+  padding-top:50px;
+  font-family: 'Cinzel', cursive, sans-serif;
 }
-
-
 
 ul {
   list-style-type: none;
   margin: 0px;
   color:white;
   }
-.bronze {
-  background-color: #a99271;
-}
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.7em;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  header {
+    background-color: var(--gray);
+    padding: 0;
+  }
+
+
+
+  main {
+    margin: 0;
+  }
 
 .logo {
   font-family: 'Pacifico', cursive, sans-serif;
@@ -31,39 +46,14 @@ ul {
   left:0;
 
 }
-footer .logo {
-  position:static;
-}
-.wrapper {
-height:100%;
-}
-
-
-body {
-
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.7em;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-
-}
-
-
-header {
-  background-color: var(--gray);
-  padding: 0;
-}
 
 nav ul li {
   display: inline;
   margin-left: 10px;
   margin-right: 10px;
-}
 
-main {
-  margin: 0;
 }
+/* navigation */
 .navigation {
   top:0;
   text-align: right;
@@ -82,7 +72,7 @@ main {
   z-index:4;
   background-color: var(--gray);
 }
-
+/* Home picture */
 .main-header {
   text-shadow: 0 0 20px black;
   background-image: url("../pic/barcelona.jpg");
@@ -111,33 +101,12 @@ main {
   text-shadow: 0px 0px 5px black;
   font-family: 'Cinzel', cursive, sans-serif;
   font-size:2em;
-
-  /* text-shadow: 10px 50px 10px 10px; */
-}
-
-.text-box {
-
-  padding: 60px 20px 60px;
-  width: 100%;
-
-  text-align: justify;
-  text-justify: inter-word;
-  clear: both;
-  /* text-align: center; */
-}
-
-.blue {
-  background-color: var(--blue);
-}
-
-.green {
-  background-color: var(--green);
 }
 
 .info {
   background-color: var(--info);
 }
-
+/* Pictures + video */
 .picture {
   background-image: url("../pic/plane.jpg");
   background-size: cover;
@@ -149,10 +118,9 @@ main {
 .picture1 {
   background-image: url("../pic/seller.jpg");
   background-size: cover;
-background-position: center;
+  background-position: center;
   min-height:350px;
   width: 100%;
-  /* float: left; */
 }
 
 .rambla {
@@ -160,7 +128,6 @@ background-position: center;
   background-size: cover;
     min-height:350px;
   width: 100%
-  /* float: left; */
 }
 
 .beach {
@@ -169,8 +136,6 @@ background-position: center;
   background-size: cover;
   min-height: 350px;
   width: 100%;
-
-  /* float: left; */
 }
 
 .eulalia {
@@ -179,22 +144,26 @@ background-position: center;
   background-size: cover;
   min-height: 350px;
   width: 100%;
-
-  /* float: left; */
-}
-footer {
-  background-color: var(--gray);
-  padding: 50px;
-  text-align: center;
 }
 
 .video {
   height:100%;
   width: 100%;
   min-height:350px;
-
   padding-left:0;
   padding-right:0;
+}
+
+/* Pictures */
+
+footer .logo {
+  position:static;
+}
+
+footer {
+  background-color: var(--gray);
+  padding: 50px;
+  text-align: center;
 }
 
 /* bootstrap */
@@ -206,69 +175,35 @@ footer {
     padding-right:0;
     padding-left:0;
 }
-/* .no-padding {
-  padding-left:0;
-  padding-right:0;
-} */
-.col {
-  padding-top: 50px;
+/* colors */
+.blue {
+  background-color: var(--blue);
 }
 
-/* animation for pictures */
-p#cf7_controls {
-  text-align:center;
-}
-#cf7_controls span {
-  padding-right:2em;
-  cursor:pointer;
-}
-#cf7 {
-  position:relative;
-  height:281px;
-  width:450px;
-  margin:0 auto 10px;
-}
-#cf7 img {
-  height:281px;
-  width:450px;
-  position:absolute;
-  left:0;
-  -webkit-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  opacity:0;
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
+.green {
+  background-color: var(--green);
 }
 
-#cf7 img.opaque {
-  opacity:1;
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=1);
+.bronze {
+  background-color: #a99271;
 }
-/* animation for pictures */
 
 /* styles for tablet */
-
 @media (min-width: 768px) {
-  body {margin:50px;
+  body {
+    margin:50px;
     -webkit-box-shadow: 0px 0px 100px black;
-            box-shadow: 10px black;}
+    box-shadow: 10px black;
+  }
   .logo {
     left:50px;
   }
   .main-header {
-text-shadow: 0px 0px 5px black;
-    height: 120vh;
-    -webkit-box-flex:wrap;
-        -ms-flex:wrap;
-            flex:wrap;
-  }
-  .column {
-    /* overwrites above margin, width and bg color */
-    margin: 10px;
-    width: 30%;
-    background-color: #e84610;
-    /* red */
+   text-shadow: 0px 0px 5px black;
+   height: 120vh;
+   -webkit-box-flex:wrap;
+   -ms-flex:wrap;
+  flex:wrap;
   }
 }
 
@@ -289,24 +224,9 @@ text-shadow: 0px 0px 5px black;
 .main-header {
   height: 120vh;
 }
-
-  .text-box {
-    padding: 40px;
-    width: 50%;
-    height: 350px;
-
-    clear: both;
-     display: table;
-
-  }
-  .center {
-
+.center {
     display: table-cell;
     vertical-align: middle;
-
-  }
-  .right {
-    /* float: right; */
   }
 
 }

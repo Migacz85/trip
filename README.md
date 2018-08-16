@@ -34,10 +34,15 @@ future.
 
 ### UX Mind map
 
+Here is Mind Map i made before creating the webpage. Is showing crucial
+question I was asking myself before development.
+
 ![alt text](https://github.com/Migacz85/trip/blob/master/docs/mindmap.png)
 
 ### Wireframe
 
+This was initial wireframe - is different from final version because during the
+development better solution's were found.
 ![alt text](https://github.com/Migacz85/trip/blob/master/docs/wireframe.png)
 
 ## Features
@@ -46,13 +51,12 @@ Possibility to:
 - Watch movies,
 - Watch pictures,
 - Listen recorded sound,
-- Navigate by "attraction",
+- Navigate by "attraction" in article,
 - Navigate by "Country".
 
 ### Existing Features
 
-- Viewerjs - allows site visitors to achieve zooming, switching to next, previous picture, by clicking in buttons.
-
+- showing more/less in navigation of article.
 
 ### Features Left to Implement
 
@@ -74,25 +78,28 @@ frameworks:
 
 - Bootstrap.
 
-libraries:
-
-- Icons.
-
 ## Testing
 
-Not done yet.
+When clicking in:
+"trip journal" logo page is taking visitor to index.html ,
+"Spain" page is taking visitor to index.html (main content of the page),
+"+" - navigation  is showing,
+"-" - navigation is disappearing,
+links in navigation - page is taking to relevant sections on the page,
+"play on audio button" - audio is playing,
+"play on youtube movie" - movie is playing,
+map - is correctly working.
+
 
 ### Bugs
 
-Not done yet.
+Not aware of any for now.
 
 ## Deployment
 
 You can visit the site on GitHub pages:
 
-```
 https://migacz85.github.io/trip
-```
 
 If you want to run code locally run:
 
@@ -100,12 +107,13 @@ If you want to run code locally run:
 git clone https://github.com/Migacz85/trip.git
 ```
 
-### Content
+### Content from different sources
 
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+uk picture
+https://unsplash.com/@withluke?utm_medium=referral&amp
+spain main picture: https://pixabay.com/en/barcelona-street-urban-spain-838742/https://pixabay.com/en/sagrada-familia-cathedral-552084/
 
 ### Media
 
-- All the photos where made by me, so copyrights belongs to me.
+- All the photos in article section where made by me, so copyrights belongs to me.
 If you are interested in using them - drop me an email migacz85@gmail.com.
-

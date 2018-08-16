@@ -74,7 +74,6 @@ display:block;
   position:sticky;
   top:-1px;
   overflow: hidden;
-/* text-align: center; */
   z-index:4;
   background-color: rgba(164, 164, 164, 0.9);
 text-align: center

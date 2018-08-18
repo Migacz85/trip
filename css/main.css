@@ -31,7 +31,7 @@ body {
   }
 
 header {
-    background-color: var(--gray);
+
     padding: 0;
   }
 
@@ -196,7 +196,7 @@ footer .logo {
 }
 
 footer {
-  background-color: var(--gray);
+  background: gray;
   padding: 50px;
   text-align: center;
 }
@@ -211,13 +211,6 @@ footer {
     padding-left:0;
 }
 /* colors */
-.blue {
-  background-color: var(--blue);
-}
-
-.green {
-  background-color: var(--green);
-}
 
 .bronze {
   background-color: #a99271;
@@ -251,7 +244,7 @@ footer {
     .title { top:60%;}
   body{
     margin:100px;
-    -webkit-box-shadow: 0px 0px 100px black;    
+    -webkit-box-shadow: 0px 0px 100px black;
   }
   .logo {
     font-family: 'Pacifico', cursive, sans-serif;

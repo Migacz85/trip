@@ -93,7 +93,19 @@ map - is correctly working.
 
 ### Bugs
 
-Not aware of any for now.
+When validating using css validator there are known warnings:
+
+29		-webkit-box-sizing is an unknown vendor extension
+73		-webkit-sticky is an unknown vendor extension
+233		-webkit-box-shadow is an unknown vendor extension
+254		-webkit-box-shadow is an unknown vendor extension
+
+Why they are showing ? Why i leave them ?
+
+1. Those errors will help support browser compatibility efforts.
+2. The validator only validates against valid code.
+3. And the vendor extensions are proprietary code.
+4. As such it will always be invalid.
 
 ## Deployment
 

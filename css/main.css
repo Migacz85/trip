@@ -21,7 +21,7 @@ ul {
   color:white;
   }
 
-span {font-size:2em;}
+span {font-size:2em; color:white;}
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.7em;
@@ -87,7 +87,7 @@ text-align: center
   width: 100%;
   height: 80vh;
   background-position: top;
-  background-clip: 100px, 100px, 75px, 5px;
+  /* background-clip: 100px 100px 75px 5px; */
 }
 /* for uk */
   .main-header2 {
@@ -115,9 +115,18 @@ text-align: center
 }
 
 .info {
-  background-color: var(--info);
+  background-color:#a99271;
 }
 /* Pictures + video */
+
+.content {
+    position: absolute;
+    bottom: 0;
+    /* background: rgba(0, 0, 0, 0.5); */
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
 .picture {
   background-image: url("../pic/plane.jpg");
   background-size: cover;
@@ -140,6 +149,21 @@ text-align: center
     min-height:350px;
   width: 100%
 }
+
+.plac-espania {
+  background-image: url("../pic/plac-espania.jpg");
+  background-size: cover;
+    min-height:350px;
+  width: 100%
+}
+
+.castle {
+  background-image: url("../pic/view-from-castle.jpg");
+  background-size: cover;
+    min-height:350px;
+  width: 100%
+}
+
 
 .beach {
   background-image: url("../pic/beach.jpg");
@@ -207,7 +231,7 @@ footer {
   body {
     margin:50px;
     -webkit-box-shadow: 0px 0px 100px black;
-    box-shadow: 10px black;
+    /* box-shadow: 10px black; */
   }
   .logo {
     left:50px;
@@ -247,5 +271,4 @@ footer {
     vertical-align: middle;
   }
 
-}
 }

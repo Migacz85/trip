@@ -24,7 +24,7 @@ ul {
 span {font-size:2em; color:white;}
 body {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.7em;
+    font-size: 17px;
     padding: 0;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -209,6 +209,15 @@ footer {
 .no-gutter > [class*='col-'] {
     padding-right:0;
     padding-left:0;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
+    text-align: center;
+    padding-bottom:50px;
+    background-color: #c5aa79;
 }
 /* colors */
 

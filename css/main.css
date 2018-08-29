@@ -14,14 +14,26 @@ h2 {
   padding-top:50px;
   font-family: 'Cinzel', cursive, sans-serif;
 }
+h2 {
+  padding:10px;
+  padding-top:50px;
+  font-family: 'Cinzel', cursive, sans-serif;
+}
+
+.main-header-tool h2{
+  padding-top:0px;
+  
+}
 
 ul {
   list-style-type: none;
   margin: 0px;
+  
   color:white;
   }
 
-span {font-size:2em; color:white;}
+span {font-size:2em; color:white;
+}
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 17px;
@@ -41,14 +53,24 @@ main {
 
 .logo {
   font-family: 'Pacifico', cursive, sans-serif;
-  position:absolute;
-  left:0;
-
+  position:relative;
+  left:5px;
+  float:left;
+  
 }
 
 /* navigation */
-.selected {
-  color:red;
+.selected, .selected li {
+
+  background-color:rgb(212, 46, 41);
+  border-radius:10px;
+  
+  text-decoration: none;
+  color:white;
+}
+.selected a:hover {
+  text-decoration: none;
+  color:white;
 }
 nav ul li {
   margin-left: 10px;
@@ -57,13 +79,24 @@ nav ul li {
 display:block;
 
 }
+.minmax {
+   float:left;
+   margin-left:40px;
+   margin-right:40px;
+}
 
-.navigation {
-
+.navigation { height:0px;}
+.main-navigation {
+   height: auto;
+   padding:10px;
   top:0;
+  min-height:40px;
   text-align: right;
-  background-color: black;
+  background-color: rgb(5, 4, 4);
   font-family: 'Cinzel', cursive, sans-serif;
+}
+.main-navigation li {
+  display:inline;
 }
 #navigation-article{
 
@@ -79,8 +112,25 @@ display:block;
 text-align: center
 }
 /* Home picture */
-.main-header {
+.main-header-tool {
   text-shadow: 0 0 20px black;
+   background-image:
+   radial-gradient(
+    rgba(19, 147, 170, 0.788),
+    #df872344
+  ),  url("../pic/places.jpeg");
+   
+   background-color:rgb(165, 130, 105);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 50vh;
+  background-position: center;
+  /* background-clip: 100px 100px 75px 5px; */
+}
+.main-header {
+  text-shadow: 0 0 20px black; 
+  
   background-image: url("../pic/barcelona.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -101,15 +151,19 @@ text-align: center
 
 }
 .title {
+  
   text-align:center;
   position:relative;
-  top:40%
+  top:40%;
+  
 
 }
 .page-title {
-
+  
   text-align: center;
-  text-shadow: 0px 0px 5px black;
+  text-shadow: 0px 0px 5px black, 
+  0px 0px 5px black,
+    0px 0px 5px black;
   font-family: 'Cinzel', cursive, sans-serif;
   font-size:2em;
 }
@@ -191,14 +245,19 @@ text-align: center
 
 /* Pictures */
 
-footer .logo {
-  position:static;
-}
-
 footer {
   background: gray;
-  padding: 50px;
   text-align: center;
+}
+footer .logo {
+   position:static; 
+}
+
+footer ul li{
+  display:inline-block;
+  width:100%;
+  padding: 10px;
+  
 }
 
 /* bootstrap */
@@ -229,14 +288,25 @@ footer {
 @media (min-width: 768px) {
   nav ul li {
     display:inline; }
-    .title { top:60%;}
+    .title {
+      text-align:center;
+      position:relative;
+      top:40%;
+    
+    }
+    .navigation {
+      min-height:auto;
+    }
   body {
     margin:50px;
     -webkit-box-shadow: 0px 0px 100px black;
     /* box-shadow: 10px black; */
   }
   .logo {
-    left:50px;
+    left:45px;
+    top:55px;
+    position:absolute;
+    
   }
   .main-header {
    text-shadow: 0px 0px 5px black;
@@ -250,7 +320,13 @@ footer {
 
   nav ul li {
     display:inline; }
-    .title { top:60%;}
+    .title {
+      
+      text-align:center;
+      position:relative;
+      top:40%
+    
+    }
   body{
     margin:100px;
     -webkit-box-shadow: 0px 0px 100px black;
@@ -258,7 +334,8 @@ footer {
   .logo {
     font-family: 'Pacifico', cursive, sans-serif;
     position:absolute;
-    left:100px;
+    left:90px;
+    top:108px;
 }
 .main-header {
  text-shadow: 0px 0px 5px black;

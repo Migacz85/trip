@@ -17,6 +17,7 @@
   <!-- bootsrap css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/hamburger.css">
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <!-- font for fancy logo -->
@@ -29,13 +30,13 @@
 
 <body>
   <header>
-    <nav class='navigation'>
+    <nav class='main-navigation'>
       <div>
         <ul>
           <li class='logo'><a href="index.html">Trip Journal</a></li>
-          <li class='selected'><a href="index.html">Spain</a></li>
+          <li class='selected '><a href="index.html">Spain</a></li>
           <li><a href="uk.html">UK</a></li>
-          <li><a href="#">+</a></li>
+          <li ><a  href="attraction.html">Attraction finder</a></li>
         </ul>
       </div>
     </nav>
@@ -50,11 +51,18 @@
 
   </header>
 
-  <main class='info'>
-    <nav id='navigation-article'>
-      <div>
-        <span onclick="myFunction2()"> <b> +</b>  </span> <span onclick="myFunction()"> <b>-</b> </span>
-        <ul>
+  <main >
+
+      <nav role="navigation">
+          <div id="menuToggle">
+          <input type="checkbox" />
+            <!-- hamburger icon -->
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+          
           <li><a href="#start">Start the trip !</a></li>
           <li><a href="#seller">Local seller</a></li>
           <li><a href="#rambla">"Rambla De Mar"</a></li>
@@ -64,18 +72,11 @@
           <li><a href="#espana">"Quatre Columnes"</a></li>
           <li><a href="#final">"Final thoughts"</a></li>
           <li><a href="#map">Map</a></li>
+          
         </ul>
       </div>
     </nav>
-    <script>
-      function myFunction() {
-        document.getElementById('navigation-article').style.cssText = 'height:40px; width:120px; background:transparent; color:black;';
-      }
-
-      function myFunction2() {
-        document.getElementById('navigation-article').style.cssText = 'height:100%; width:100%;';
-      }
-    </script>
+    
     <!-- piture on right text on left -->
     <div class="container-fluid no-padding">
       <div class="row">
@@ -196,7 +197,7 @@
 
           <p>Day 4</p>
         </div>
-        <div role="img" aria-label="Plac espania" class="col-md plac-espania col-md-pull-6 col-sm-pull-6">
+        <div role="img" aria-label="Place espania" class="col-md plac-espania col-md-pull-6 col-sm-pull-6">
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 /* tags */
 a, p, h1, h2, h3  {
   color: white;
+  
   padding: 0;
   margin: 0;
   padding:10px;
@@ -30,9 +31,12 @@ ul {
   margin: 0px;
   
   color:white;
+  color:black;
+  
   }
 
-span {font-size:2em; color:white;
+nav span {font-size:2em; color:white;
+  
 }
 body {
     font-family: 'Montserrat', sans-serif;
@@ -67,10 +71,12 @@ main {
   
   text-decoration: none;
   color:white;
+  
 }
 .selected a:hover {
   text-decoration: none;
   color:white;
+  
 }
 nav ul li {
   margin-left: 10px;
@@ -154,10 +160,10 @@ text-align: center
   
   text-align:center;
   position:relative;
-  top:40%;
-  
-
+  top:7vh;
 }
+
+
 .page-title {
   
   text-align: center;
@@ -278,6 +284,12 @@ footer ul li{
     padding-bottom:50px;
     background-color: #c5aa79;
 }
+.row {
+  background-color: #a99271;
+  height:100%;
+  
+}
+.col {padding:0px;}
 /* colors */
 
 .bronze {
@@ -291,8 +303,7 @@ footer ul li{
     .title {
       text-align:center;
       position:relative;
-      top:40%;
-    
+     
     }
     .navigation {
       min-height:auto;
@@ -324,7 +335,7 @@ footer ul li{
       
       text-align:center;
       position:relative;
-      top:40%
+      
     
     }
   body{

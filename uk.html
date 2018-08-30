@@ -30,6 +30,7 @@
   <!-- bootsrap css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/hamburger.css">
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <!-- font for fancy logo -->
@@ -42,13 +43,13 @@
 
 <body>
   <header>
-    <nav class='navigation'>
+    <nav class='main-navigation'>
       <div>
         <ul>
           <li class='logo'><a href="index.html">Trip Journal</a></li>
-          <li class='selected'><a href="index.html">Spain</a></li>
-          <li><a href="uk.html">UK</a></li>
-          <li><a href="#">+</a></li>
+          <li ><a href="index.html">Spain</a></li>
+          <li class='selected'><a href="uk.html">UK</a></li>
+          <li><a href="attraction.html">Attraction finder</a></li>
         </ul>
       </div>
     </nav>
@@ -63,9 +64,12 @@
   </header>
 
   <main class='info'>
-    <nav id='navigation-article'>
-      <div>
-        <ul>
+    <nav id='navigation'>
+      <div id='menuToggle'>
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
           <span onclick="myFunction2()"> <b> +</b>  </span> <span onclick="myFunction()"> <b>-</b> </span>
           <li><a href="#start">"Another trip !</a></li>
 
@@ -104,6 +108,7 @@
       <li class='logo'><a href="index.html">Trip Journal</a></li>
       <li>© Marcin Mrugacz</li>
     </ul>
+    </footer>
 </body>
 
 </html>

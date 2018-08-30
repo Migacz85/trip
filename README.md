@@ -124,8 +124,10 @@ git clone https://github.com/Migacz85/trip.git
 uk picture
 https://unsplash.com/@withluke?utm_medium=referral&amp
 spain main picture: https://pixabay.com/en/barcelona-street-urban-spain-838742/https://pixabay.com/en/sagrada-familia-cathedral-552084/
+Finder tool picture:
+https://www.pexels.com/photo/sign-arrow-direction-travel-52526/
 
 ### Media
 
-- All the photos in article section where made by me, so copyrights belongs to me.
+- The rest photos in article section where made by me, so copyrights belongs to me.
 If you are interested in using them - drop me an email migacz85@gmail.com.

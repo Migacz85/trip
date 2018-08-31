@@ -42,21 +42,22 @@
         z-index: 5;
         background-color: #fff;
       } 
-      #locationField, #controls {
-        position:relative;
-        left: 50%; /* relative to nearest positioned ancestor or body element */
-        top: 50%; /*  relative to nearest positioned ancestor or body element */
-        transform: translate(-50%, -50%); /* relative to element's height & width */
-
-        position: inherit;
-        width: 80vw;
-   
-        background-color: #fff;
-        color:black;
+      input {
+    display:inline;
+      }
+      #locationField, #controls  {
+        margin-left:auto;
+        width:50vw;
+        
+        margin-right:auto;
+        margin-top: 20px;
+        margin-bottom: 0px;
+           color:black;
       }
     
+    
       #autocomplete {
-        width: 80vw;
+        width: 50vw; 
         color:black;
         font-size: 1.3em;
         text-align: center;

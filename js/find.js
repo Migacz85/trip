@@ -2,12 +2,19 @@
       var markers = [];
       var autocomplete;
       var countryRestrict = {
-          'country': 'us'
+          'country': 'es' //set default country
       };
       var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
       var hostnameRegexp = new RegExp('^https?://.+?/');
 
       var countries = {
+        'ie': {
+            center: {
+                lat: 53,
+                lng: -7.6
+            },
+            zoom: 6
+        },
           'au': {
               center: {
                   lat: -25.3,
@@ -98,15 +105,23 @@
                   lng: -4.6
               },
               zoom: 5
+          },
+          'pl': {
+              center: {
+                  lat: 51.9,
+                  lng: 19.14
+              },
+              zoom: 5
           }
+
       };
 
-      
+
 
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
-              zoom: countries['us'].zoom,
-              center: countries['us'].center,
+              zoom: countries['es'].zoom,
+              center: countries['es'].center,
               mapTypeControl: false,
               panControl: false,
               zoomControl: false,
@@ -130,10 +145,27 @@
 
           autocomplete.addListener('place_changed', onPlaceChanged);
 
+          // Update lat/long value of div when anywhere in the map is clicked  
+          google.maps.event.addListener(map, 'click', function (event) {
+              search.bounds = event.latLng
+        
+              map.setCenter({
+                  lat: event.latLng.lat(),
+                  lng: event.latLng.lng()
+              });
+              search()
+              //map.setZoom(8);
+              console.log(event.latLng.lat(), event.latLng.lng())
+          });
+          //////////////////////////////////
           // Add a DOM event listener to react when the user selects a country.
           document.getElementById('country').addEventListener(
               'change', setAutocompleteCountry);
+
       }
+
+
+
 
       // When the user selects a city, get the place details for the city and
       // zoom the map in on the city.
@@ -142,37 +174,32 @@
           if (place.geometry) {
               map.panTo(place.geometry.location);
               map.setZoom(15);
+            
               search();
           } else {
               document.getElementById('autocomplete').placeholder = 'Enter a city';
           }
       }
 
-      
-      
-
-  
-      function chooseTypes() {
-
-       
-         }
 
       // Search for types:['museum'] in the selected city, within the viewport of the map.
-      
+
       function search() {
-        let search = {
-            bounds: map.getBounds(),
-            types: []
-        }; 
-       
-        if (document.getElementById("Museum").checked ) search.types[0]='museum';
-        if (document.getElementById("Restaurant").checked ) search.types[0]='restaurant';
-        if (document.getElementById("Cafe").checked ) search.types[0]='cafe';
-        if (document.getElementById("Spa").checked ) search.types[0]='spa';
-        
-        
+          let search = {
+              bounds: map.getBounds(),
+              types: ['cafe']
+          };
+          console.log(search.bounds)
+
+          if (document.getElementById("Museum").checked) search.types[0] = 'museum';
+          if (document.getElementById("Restaurant").checked) search.types[0] = 'restaurant';
+          if (document.getElementById("Cafe").checked) search.types[0] = 'cafe';
+          if (document.getElementById("Spa").checked) search.types[0] = 'spa';
+
+
           console.log(search.types);
-         
+
+
           places.nearbySearch(search, function (results, status) {
               if (status === google.maps.places.PlacesServiceStatus.OK) {
                   clearResults();
@@ -209,6 +236,8 @@
           }
           markers = [];
       }
+
+
 
       // Set the country restriction based on user input.
       // Also center and zoom the map on the given country.
@@ -292,7 +321,7 @@
       function buildIWContent(place) {
           document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
               'src="' + place.icon + '"/>';
-          document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
+          document.getElementById('iw-url').innerHTML = '<b><a target="_blank" href="' + place.url +
               '">' + place.name + '</a></b>';
           document.getElementById('iw-address').textContent = place.vicinity;
 

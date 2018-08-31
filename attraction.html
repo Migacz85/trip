@@ -54,7 +54,7 @@
                 <div id="controls" class="form-group">
                     <select id="country" class="form-control" id="sel1">
                         
-                        <option value="all" selected>All</option>
+                        <option value="all">All</option>
                         <option value="au">Australia</option>
                         <option value="pl">Poland</option>
                         <option value="br">Brazil</option>
@@ -66,7 +66,7 @@
                         <option value="it">Italy</option>
                         <option value="ie">Ireland</option>
                         <option value="za">South Africa</option>
-                        <option value="es">Spain</option>
+                        <option value="es" selected>Spain</option>
                         <option value="pt">Portugal</option>
                         <option value="us">U.S.A.</option>
                         <option value="uk">United Kingdom</option>
@@ -80,13 +80,13 @@
         
                 <fieldset >
                 <!-- <legend>Choose attractions</legend> -->
-                <input onclick="chooseTypes()" type="radio" id="Museum" name="feature" value="Museum" checked />
+                <input onclick="search()" type="radio" id="Museum" name="feature" value="Museum" checked />
                 <label for="Museum">Museum</label>
-                <input onclick="chooseTypes()" type="radio" id="Restaurant" name="feature" value="Restaurant" />
+                <input onclick="search()" type="radio" id="Restaurant" name="feature" value="Restaurant" />
                 <label for="Restaurant">Restaurant</label>
-                <input onclick="chooseTypes()" type="radio" id="Cafe" name="feature" value="Cafe" />
+                <input onclick="search()" type="radio" id="Cafe" name="feature" value="Cafe" />
                 <label for="Cafe">Cafe</label>
-                <input type="radio" id="Spa" name="feature" value="Spa" />
+                <input onclick="search()" type="radio" id="Spa" name="feature" value="Spa" />
                 <label for="Spa">Spa</label>
 
                 </fieldset>
@@ -123,8 +123,6 @@
 
                     <div id="map"></div>
                 </div>
-
-
 
             </div>
 

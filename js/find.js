@@ -6,7 +6,7 @@
       };
       var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
       var hostnameRegexp = new RegExp('^https?://.+?/');
-
+      let lat,lng;
       var countries = {
         'ie': {
             center: {
@@ -148,14 +148,16 @@
           // Update lat/long value of div when anywhere in the map is clicked  
           google.maps.event.addListener(map, 'click', function (event) {
               search.bounds = event.latLng
-        
+         lat=event.latLng.lat()
+         lng=event.latLng.lng()
+
+
               map.setCenter({
                   lat: event.latLng.lat(),
                   lng: event.latLng.lng()
               });
               search()
               //map.setZoom(8);
-              console.log(event.latLng.lat(), event.latLng.lng())
           });
           //////////////////////////////////
           // Add a DOM event listener to react when the user selects a country.
@@ -174,7 +176,7 @@
           if (place.geometry) {
               map.panTo(place.geometry.location);
               map.setZoom(15);
-            
+              
               search();
           } else {
               document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -189,16 +191,13 @@
               bounds: map.getBounds(),
               types: ['cafe']
           };
-          console.log(search.bounds)
 
           if (document.getElementById("Museum").checked) search.types[0] = 'museum';
           if (document.getElementById("Restaurant").checked) search.types[0] = 'restaurant';
           if (document.getElementById("Cafe").checked) search.types[0] = 'cafe';
           if (document.getElementById("Spa").checked) search.types[0] = 'spa';
 
-
-          console.log(search.types);
-
+          
 
           places.nearbySearch(search, function (results, status) {
               if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -221,9 +220,12 @@
                       google.maps.event.addListener(markers[i], 'click', showInfoWindow);
                       setTimeout(dropMarker(i), i * 100);
                       addResult(results[i], i);
+
+                      
                   }
               }
-          });
+          }); 
+
       }
 
 
@@ -304,6 +306,8 @@
       // Get the place details for a attraction. Show the information in an info window,
       // anchored on the marker for the hotel that the user selected.
       function showInfoWindow() {
+
+       
           var marker = this;
           places.getDetails({
                   placeId: marker.placeResult.place_id
@@ -318,7 +322,17 @@
       }
 
       // Load the place information into the HTML elements used by the info window.
+      
       function buildIWContent(place) {
+       
+        
+       //show picture of current attraction
+      let photo_url=place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500})
+        console.log( )
+
+       // let photo_url="https://maps.googleapis.com/maps/api/streetview?size=600x600&location=" + lat + "," + lng + "&key=AIzaSyAQpEEjufUcDKXRlCU5wdzZOeuCmYX7hrg"
+        document.getElementById('photo').innerHTML = '<img  ' + 'id="gphoto"' + 'src="' + photo_url + '"/>'; 
+        ////
           document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
               'src="' + place.icon + '"/>';
           document.getElementById('iw-url').innerHTML = '<b><a target="_blank" href="' + place.url +

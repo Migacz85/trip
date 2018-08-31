@@ -54,7 +54,7 @@
                 <div id="controls" class="form-group">
                     <select id="country" class="form-control" id="sel1">
                         
-                        <option value="all">All</option>
+                        <option value="all" selected>All</option>
                         <option value="au">Australia</option>
                         <option value="pl">Poland</option>
                         <option value="br">Brazil</option>
@@ -66,7 +66,7 @@
                         <option value="it">Italy</option>
                         <option value="ie">Ireland</option>
                         <option value="za">South Africa</option>
-                        <option value="es" selected>Spain</option>
+                        <option value="es">Spain</option>
                         <option value="pt">Portugal</option>
                         <option value="us">U.S.A.</option>
                         <option value="uk">United Kingdom</option>
@@ -76,21 +76,17 @@
 
                     <input id="autocomplete" placeholder="Enter a city" type="text" />
                 </div>
-
-                
-
-            </br>
-            
-
+               </br>
+        
                 <fieldset >
                 <!-- <legend>Choose attractions</legend> -->
-                <input type="checkbox" id="Museum" name="feature" value="Museum" checked />
-                <label for="Museum">Musem</label>
-                <input type="checkbox" id="Restaurant" name="feature" value="Restaurant" />
+                <input onclick="chooseTypes()" type="radio" id="Museum" name="feature" value="Museum" checked />
+                <label for="Museum">Museum</label>
+                <input onclick="chooseTypes()" type="radio" id="Restaurant" name="feature" value="Restaurant" />
                 <label for="Restaurant">Restaurant</label>
-                <input type="checkbox" id="Cafe" name="feature" value="Cafe" />
+                <input onclick="chooseTypes()" type="radio" id="Cafe" name="feature" value="Cafe" />
                 <label for="Cafe">Cafe</label>
-                <input type="checkbox" id="Spa" name="feature" value="Spa" />
+                <input type="radio" id="Spa" name="feature" value="Spa" />
                 <label for="Spa">Spa</label>
 
                 </fieldset>
@@ -183,8 +179,7 @@
 
         </ul>
     </footer>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQpEEjufUcDKXRlCU5wdzZOeuCmYX7hrg&libraries=places&callback=initMap"
-        async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQpEEjufUcDKXRlCU5wdzZOeuCmYX7hrg&libraries=places&callback=initMap" async defer></script>
 </body>
 
 </html>

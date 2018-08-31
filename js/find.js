@@ -101,6 +101,8 @@
           }
       };
 
+      
+
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
               zoom: countries['us'].zoom,
@@ -146,14 +148,31 @@
           }
       }
 
+      
+      
+
+  
+      function chooseTypes() {
+
+       
+         }
+
       // Search for types:['museum'] in the selected city, within the viewport of the map.
       
       function search() {
-          var search = {
-              bounds: map.getBounds(),
-              types: ['museum']
-          };
-
+        let search = {
+            bounds: map.getBounds(),
+            types: []
+        }; 
+       
+        if (document.getElementById("Museum").checked ) search.types[0]='museum';
+        if (document.getElementById("Restaurant").checked ) search.types[0]='restaurant';
+        if (document.getElementById("Cafe").checked ) search.types[0]='cafe';
+        if (document.getElementById("Spa").checked ) search.types[0]='spa';
+        
+        
+          console.log(search.types);
+         
           places.nearbySearch(search, function (results, status) {
               if (status === google.maps.places.PlacesServiceStatus.OK) {
                   clearResults();
@@ -179,6 +198,8 @@
               }
           });
       }
+
+
 
       function clearMarkers() {
           for (var i = 0; i < markers.length; i++) {

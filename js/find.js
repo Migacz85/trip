@@ -6,16 +6,17 @@
       };
       var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
       var hostnameRegexp = new RegExp('^https?://.+?/');
-      let lat,lng;
+      let lat, lng, place;
+      let arrPhoto_url = [];
       var countries = {
-      
-        'ie': {
-            center: {
-                lat: 53,
-                lng: -7.6
-            },
-            zoom: 6
-        },
+
+          'ie': {
+              center: {
+                  lat: 53,
+                  lng: -7.6
+              },
+              zoom: 6
+          },
           'au': {
               center: {
                   lat: -25.3,
@@ -149,8 +150,9 @@
           // Update lat/long value of div when anywhere in the map is clicked  
           google.maps.event.addListener(map, 'click', function (event) {
               search.bounds = event.latLng
-         lat=event.latLng.lat()
-         lng=event.latLng.lng()
+              lat = event.latLng.lat()
+              lng = event.latLng.lng()
+              
 
 
               map.setCenter({
@@ -164,10 +166,10 @@
           // Add a DOM event listener to react when the user selects a country.
           document.getElementById('country').addEventListener(
               'change', setAutocompleteCountry);
-              
-              //Dont show the results on the begining:
-              document.getElementById("gresults").style="display:none;"
-              document.getElementById("info-content").style="display:none;"
+
+          //Dont show the results on the begining:
+          document.getElementById("gresults").style = "display:none;"
+          document.getElementById("info-content").style = "display:none;"
       }
 
 
@@ -176,11 +178,12 @@
       // When the user selects a city, get the place details for the city and
       // zoom the map in on the city.
       function onPlaceChanged() {
-          var place = autocomplete.getPlace();
+          place = autocomplete.getPlace();
           if (place.geometry) {
               map.panTo(place.geometry.location);
               map.setZoom(15);
               
+
               search();
           } else {
               document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -191,8 +194,8 @@
       // Search for types:['museum'] in the selected city, within the viewport of the map.
 
       function search() {
-        document.getElementById("gresults").style="display:static;"
-        
+          document.getElementById("gresults").style = "display:static;"
+
           let search = {
               bounds: map.getBounds(),
               types: ['cafe']
@@ -203,18 +206,18 @@
           if (document.getElementById("Cafe").checked) search.types[0] = 'cafe';
           if (document.getElementById("Spa").checked) search.types[0] = 'spa';
 
-          
+
 
           places.nearbySearch(search, function (results, status) {
-            
-            //if there is no results inform user about that
-            if (results.length==0) {document.getElementById("konsole").innerHTML=' <p  class="alert alert-info" role="alert"> Nothing to show here - click somwhere else on the map </p>' 
-            document.getElementById("gresults").style="display:none;";
-            document.getElementById("info-content").style="display:none;"; 
-            clearResults();
-            clearMarkers();}
-            
-            else  document.getElementById("konsole").innerHTML='';
+
+              //if there is no results inform user about that
+              if (results.length == 0) {
+                  document.getElementById("konsole").innerHTML = ' <p  class="alert alert-info" role="alert"> Nothing to show here - click somwhere else on the map </p>'
+                  document.getElementById("gresults").style = "display:none;";
+                  document.getElementById("info-content").style = "display:none;";
+                  clearResults();
+                  clearMarkers();
+              } else document.getElementById("konsole").innerHTML = '';
 
               if (status === google.maps.places.PlacesServiceStatus.OK) {
                   clearResults();
@@ -236,10 +239,10 @@
                       markers[i].placeResult = results[i];
                       google.maps.event.addListener(markers[i], 'click', showInfoWindow);
                       setTimeout(dropMarker(i), i * 100);
-                      addResult(results[i], i);        
+                      addResult(results[i], i);
                   }
               }
-          }); 
+          });
       }
 
       function clearMarkers() {
@@ -272,7 +275,7 @@
               map.setZoom(countries[country].zoom);
           }
           clearResults();
-          document.getElementById("gresults").style="display:none;"
+          document.getElementById("gresults").style = "display:none;"
           clearMarkers();
       }
 
@@ -280,7 +283,7 @@
           return function () {
               markers[i].setMap(map);
           };
-         
+
       }
 
       function addResult(result, i) {
@@ -319,7 +322,7 @@
       // anchored on the marker for the hotel that the user selected.
       function showInfoWindow() {
 
-       
+          n=0; //reset photo to first
           var marker = this;
           places.getDetails({
                   placeId: marker.placeResult.place_id
@@ -330,23 +333,47 @@
                   }
                   infoWindow.open(map, marker);
                   buildIWContent(place);
+
               });
       }
 
       // Load the place information into the HTML elements used by the info window.
-      
-      function buildIWContent(place) {
-        
-        
-       //show picture of current attraction
-      let photo_url=place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500})
-      document.getElementById("info-content").style="display:static;" 
-      
+      let n = 0;
 
-       // let photo_url="https://maps.googleapis.com/maps/api/streetview?size=600x600&location=" + lat + "," + lng + "&key=AIzaSyAQpEEjufUcDKXRlCU5wdzZOeuCmYX7hrg"
-        document.getElementById('photo').style =' background-image: url("' + photo_url + ' ");' ;
-        //'<img  ' + 'id="gphoto"' + 'src="' + photo_url + '"/>'; 
-        ////
+      function prev() {
+        if (n > 0) { n--; }
+        console.log(n)
+        document.getElementById("info-content").style = "display:static;"
+        document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
+
+      }
+
+      function next() {
+          if (n < 9) {  n++; }
+          console.log(n)
+          document.getElementById("info-content").style = "display:static;"
+          document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
+      }
+
+      function buildIWContent(place) {
+
+          //show picture of current attraction
+
+          for (let i = 0; i < 10; i++) {
+              arrPhoto_url[i] = place.photos[i].getUrl({
+                  'maxWidth': 500,
+                  'maxHeight': 500
+              });
+          }
+
+          let photo_url = place.photos[n].getUrl({
+              'maxWidth': 500,
+              'maxHeight': 500
+          })
+          document.getElementById("info-content").style = "display:static;"
+
+          document.getElementById('photo').style = ' background-image: url("' + photo_url + ' ");';
+          ////
           document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
               'src="' + place.icon + '"/>';
           document.getElementById('iw-url').innerHTML = '<b><a target="_blank" href="' + place.url +

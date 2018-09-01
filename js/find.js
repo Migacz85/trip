@@ -8,6 +8,7 @@
       var hostnameRegexp = new RegExp('^https?://.+?/');
       let lat,lng;
       var countries = {
+      
         'ie': {
             center: {
                 lat: 53,
@@ -166,6 +167,7 @@
               
               //Dont show the results on the begining:
               document.getElementById("gresults").style="display:none;"
+              document.getElementById("info-content").style="display:none;"
       }
 
 
@@ -190,6 +192,7 @@
 
       function search() {
         document.getElementById("gresults").style="display:static;"
+        
           let search = {
               bounds: map.getBounds(),
               types: ['cafe']
@@ -203,6 +206,16 @@
           
 
           places.nearbySearch(search, function (results, status) {
+            
+            //if there is no results inform user about that
+            if (results.length==0) {document.getElementById("konsole").innerHTML=' <p  class="alert alert-info" role="alert"> Nothing to show here - click somwhere else on the map </p>' 
+            document.getElementById("gresults").style="display:none;";
+            document.getElementById("info-content").style="display:none;"; 
+            clearResults();
+            clearMarkers();}
+            
+            else  document.getElementById("konsole").innerHTML='';
+
               if (status === google.maps.places.PlacesServiceStatus.OK) {
                   clearResults();
                   clearMarkers();
@@ -219,6 +232,7 @@
                       });
                       // If the user clicks a attraction marker, show the details of that hotel
                       // in an info window.
+
                       markers[i].placeResult = results[i];
                       google.maps.event.addListener(markers[i], 'click', showInfoWindow);
                       setTimeout(dropMarker(i), i * 100);
@@ -326,10 +340,12 @@
         
        //show picture of current attraction
       let photo_url=place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500})
-        console.log( )
+      document.getElementById("info-content").style="display:static;" 
+      
 
        // let photo_url="https://maps.googleapis.com/maps/api/streetview?size=600x600&location=" + lat + "," + lng + "&key=AIzaSyAQpEEjufUcDKXRlCU5wdzZOeuCmYX7hrg"
-        document.getElementById('photo').innerHTML = '<img  ' + 'id="gphoto"' + 'src="' + photo_url + '"/>'; 
+        document.getElementById('photo').style =' background-image: url("' + photo_url + ' ");' ;
+        //'<img  ' + 'id="gphoto"' + 'src="' + photo_url + '"/>'; 
         ////
           document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
               'src="' + place.icon + '"/>';

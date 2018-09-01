@@ -1,6 +1,6 @@
 /* tags */
 
-p,
+
 h1,
 h2,
 h3, fieldset {
@@ -10,7 +10,7 @@ h3, fieldset {
   text-shadow: 0 0 6px black,
   0 0 6px black;
 }
-
+p {color: white; padding:10px;margin-top:15px;}
 nav a {color:white; text-shadow: 0 0 6px black;}
 footer a {color:white; text-shadow: 0 0 6px black;}
 
@@ -64,6 +64,8 @@ body {
   padding: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  background-color: #9e9e9eef;
+  
 }
 
 header {

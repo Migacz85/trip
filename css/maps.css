@@ -23,6 +23,11 @@ table {
 main {
     background-color:#a5a5a5;
 }
+.buttons{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+}
 .results {
     height: 50vh;
     width:100%;

@@ -131,15 +131,6 @@
 
             <div class="row" id="gresults">
 
-                <div class="col-4 no-padding results">
-
-                    <div id="listing">
-                        <table id="resultsTable">
-                            <tbody id="results"></tbody>
-                        </table>
-                    </div>
-
-                </div>
                 <div class="col-8" id="photo">
 
                     <div id="info-content">
@@ -166,11 +157,21 @@
                             </tr>
                         </table>
                     </div>
+            <div class='buttons'>
+                    <button type="button" class="btn btn-secondary" onclick="prev()" > Prev </button>
 
-                    <button onclick="prev()"> Prev </button>
-
-                    <button onclick="next()"> Next </button>
+                    <button type="button" class="btn btn-secondary"  onclick="next()"> Next </button>
                 </div>
+                </div>
+                <div class="col-4 no-padding results">
+
+                        <div id="listing">
+                            <table id="resultsTable">
+                                <tbody id="results"></tbody>
+                            </table>
+                        </div>
+    
+                    </div>
 
 
             </div>

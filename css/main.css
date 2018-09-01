@@ -288,6 +288,7 @@ footer {
 footer .logo {
   position: static;
   width: 100%;
+  padding-top:30px;
 }
 
 footer ul li {

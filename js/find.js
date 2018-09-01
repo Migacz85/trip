@@ -450,7 +450,7 @@
               document.getElementById('iw-website-row').style.display = '';
 
               //website of place
-              let webUrl = '<a href="' + website + ' ">' + website + '</a>';
+              let webUrl = '<a target="_blank" href="' + website + ' ">' + website + '</a>';
               document.getElementById('iw-website').innerHTML = webUrl;
 
           } else {

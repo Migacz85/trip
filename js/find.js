@@ -8,6 +8,7 @@
       var hostnameRegexp = new RegExp('^https?://.+?/');
       let lat, lng, place;
       let arrPhoto_url = [];
+      let photo_url = 'https://cdn.geckoandfly.com/wp-content/uploads/2017/07/travel-quotes-adventure-01-830x467.jpg'; //default url
       var countries = {
 
           'ie': {
@@ -121,6 +122,7 @@
 
 
       function initMap() {
+
           map = new google.maps.Map(document.getElementById('map'), {
               zoom: countries['es'].zoom,
               center: countries['es'].center,
@@ -149,10 +151,11 @@
 
           // Update lat/long value of div when anywhere in the map is clicked  
           google.maps.event.addListener(map, 'click', function (event) {
+
               search.bounds = event.latLng
               lat = event.latLng.lat()
               lng = event.latLng.lng()
-              
+
 
 
               map.setCenter({
@@ -182,7 +185,7 @@
           if (place.geometry) {
               map.panTo(place.geometry.location);
               map.setZoom(15);
-              
+
 
               search();
           } else {
@@ -209,15 +212,19 @@
 
 
           places.nearbySearch(search, function (results, status) {
-
+              //if (results.length>0) {photo_url='https://cdn.geckoandfly.com/wp-content/uploads/2017/07/travel-quotes-adventure-01-830x467.jpg';} //reset the photo
               //if there is no results inform user about that
               if (results.length == 0) {
+
                   document.getElementById("konsole").innerHTML = ' <p  class="alert alert-info" role="alert"> Nothing to show here - click somwhere else on the map </p>'
                   document.getElementById("gresults").style = "display:none;";
                   document.getElementById("info-content").style = "display:none;";
                   clearResults();
                   clearMarkers();
-              } else document.getElementById("konsole").innerHTML = '';
+              } else {
+                  document.getElementById("konsole").innerHTML = '';
+                  document.getElementById('photo').style = ' background-image: url("' + photo_url + ' ");'; // load default photo
+              }
 
               if (status === google.maps.places.PlacesServiceStatus.OK) {
                   clearResults();
@@ -322,7 +329,7 @@
       // anchored on the marker for the hotel that the user selected.
       function showInfoWindow() {
 
-          n=0; //reset photo to first
+          n = 0; //reset photo to first
           var marker = this;
           places.getDetails({
                   placeId: marker.placeResult.place_id
@@ -339,37 +346,59 @@
 
       // Load the place information into the HTML elements used by the info window.
       let n = 0;
+      let nmax = 9;
 
       function prev() {
-        if (n > 0) { n--; }
-        console.log(n)
-        document.getElementById("info-content").style = "display:static;"
-        document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
-
+          if (n > 0) {
+              n--;
+          }
+          console.log(n)
+          if (arrPhoto_url != "") {
+              document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
+          }
       }
 
       function next() {
-          if (n < 9) {  n++; }
-          console.log(n)
-          document.getElementById("info-content").style = "display:static;"
-          document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
+          if (n < nmax - 1) {
+              n++;
+          }
+          console.log("n=:", n, "arrPhoto_url:", arrPhoto_url[n]);
+          if (arrPhoto_url != "") {
+              document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
+          }
       }
 
       function buildIWContent(place) {
-
+          // store number of photos 
           //show picture of current attraction
 
-          for (let i = 0; i < 10; i++) {
-              arrPhoto_url[i] = place.photos[i].getUrl({
-                  'maxWidth': 500,
-                  'maxHeight': 500
-              });
+
+          if (place.photos != undefined) {
+              nmax = place.photos.length;
+              for (let i = 0; i < place.photos.length; i++) {
+                  arrPhoto_url[i] = place.photos[i].getUrl({
+                      'maxWidth': 500,
+                      'maxHeight': 500
+                  });
+              }
+
+
+          } else {
+              //     console.log('Error not loaded a picture', n)  
+              console.log(place);
+              
+              //  photo_url=['https://png.icons8.com/ios/1600/no-camera.png'] 
           }
 
-          let photo_url = place.photos[n].getUrl({
-              'maxWidth': 500,
-              'maxHeight': 500
-          })
+          //error...
+
+          if (place.photos != undefined) {
+              photo_url = place.photos[n].getUrl({
+                  'maxWidth': 500,
+                  'maxHeight': 500
+              })
+          } else photo_url = ['https://png.icons8.com/ios/1600/no-camera.png']
+
           document.getElementById("info-content").style = "display:static;"
 
           document.getElementById('photo').style = ' background-image: url("' + photo_url + ' ");';
@@ -410,13 +439,20 @@
           // to give a short URL for displaying in the info window.
           if (place.website) {
               var fullUrl = place.website;
+
+              //fullUrl='<a href="' + place.website + ' ">' + place.website + '</a>';
+
               var website = hostnameRegexp.exec(place.website);
               if (website === null) {
                   website = 'http://' + place.website + '/';
                   fullUrl = website;
               }
               document.getElementById('iw-website-row').style.display = '';
-              document.getElementById('iw-website').textContent = website;
+
+              //website of place
+              let webUrl = '<a href="' + website + ' ">' + website + '</a>';
+              document.getElementById('iw-website').innerHTML = webUrl;
+
           } else {
               document.getElementById('iw-website-row').style.display = 'none';
           }

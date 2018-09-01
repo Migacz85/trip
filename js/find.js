@@ -163,7 +163,9 @@
           // Add a DOM event listener to react when the user selects a country.
           document.getElementById('country').addEventListener(
               'change', setAutocompleteCountry);
-
+              
+              //Dont show the results on the begining:
+              document.getElementById("gresults").style="display:none;"
       }
 
 
@@ -187,6 +189,7 @@
       // Search for types:['museum'] in the selected city, within the viewport of the map.
 
       function search() {
+        document.getElementById("gresults").style="display:static;"
           let search = {
               bounds: map.getBounds(),
               types: ['cafe']
@@ -219,16 +222,11 @@
                       markers[i].placeResult = results[i];
                       google.maps.event.addListener(markers[i], 'click', showInfoWindow);
                       setTimeout(dropMarker(i), i * 100);
-                      addResult(results[i], i);
-
-                      
+                      addResult(results[i], i);        
                   }
               }
           }); 
-
       }
-
-
 
       function clearMarkers() {
           for (var i = 0; i < markers.length; i++) {
@@ -238,8 +236,6 @@
           }
           markers = [];
       }
-
-
 
       // Set the country restriction based on user input.
       // Also center and zoom the map on the given country.
@@ -262,6 +258,7 @@
               map.setZoom(countries[country].zoom);
           }
           clearResults();
+          document.getElementById("gresults").style="display:none;"
           clearMarkers();
       }
 
@@ -269,6 +266,7 @@
           return function () {
               markers[i].setMap(map);
           };
+         
       }
 
       function addResult(result, i) {
@@ -324,7 +322,7 @@
       // Load the place information into the HTML elements used by the info window.
       
       function buildIWContent(place) {
-       
+        
         
        //show picture of current attraction
       let photo_url=place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500})

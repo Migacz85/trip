@@ -1,5 +1,5 @@
 /* tags */
-a,
+
 p,
 h1,
 h2,
@@ -10,6 +10,9 @@ h3, fieldset {
   text-shadow: 0 0 6px black,
   0 0 6px black;
 }
+
+nav a {color:white; text-shadow: 0 0 6px black;}
+footer a {color:white; text-shadow: 0 0 6px black;}
 
 a:hover {
   color: #abd3ff;

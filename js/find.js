@@ -122,14 +122,16 @@
 
 
       function initMap() {
-
+          document.getElementById('prev').disabled = true;
+          document.getElementById('next').disabled = true;
           map = new google.maps.Map(document.getElementById('map'), {
               zoom: countries['es'].zoom,
               center: countries['es'].center,
               mapTypeControl: false,
               panControl: false,
-              zoomControl: false,
-              streetViewControl: false
+              zoomControl: true,
+              streetViewControl: false,
+              gestureHandling: "greedy"
           });
 
           infoWindow = new google.maps.InfoWindow({
@@ -162,8 +164,15 @@
                   lat: event.latLng.lat(),
                   lng: event.latLng.lng()
               });
+              map.setZoom(15);
+              //clear array of photos and set default photo, disable next, prev
+              arrPhoto_url = [];
+              document.getElementById('next').disabled = true;
+              document.getElementById('prev').disabled = true;
+              photo_url = 'https://cdn.geckoandfly.com/wp-content/uploads/2017/07/travel-quotes-adventure-01-830x467.jpg'; //set default photo
+              
               search()
-              //map.setZoom(8);
+              
           });
           //////////////////////////////////
           // Add a DOM event listener to react when the user selects a country.
@@ -186,7 +195,6 @@
               map.panTo(place.geometry.location);
               map.setZoom(15);
 
-
               search();
           } else {
               document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -208,17 +216,24 @@
           if (document.getElementById("Restaurant").checked) search.types[0] = 'restaurant';
           if (document.getElementById("Cafe").checked) search.types[0] = 'cafe';
           if (document.getElementById("Spa").checked) search.types[0] = 'spa';
+          if (document.getElementById("Art").checked) search.types[0] = 'art_gallery';
+          if (document.getElementById("Bar").checked) search.types[0] = 'bar';
+          if (document.getElementById("Casino").checked) search.types[0] = 'casino';
+          if (document.getElementById("night_club").checked) search.types[0] = 'night_club';
+          if (document.getElementById("hotel").checked) search.types[0] = 'hotel';
 
-
+      console.log(search.types[0]);
 
           places.nearbySearch(search, function (results, status) {
-              //if (results.length>0) {photo_url='https://cdn.geckoandfly.com/wp-content/uploads/2017/07/travel-quotes-adventure-01-830x467.jpg';} //reset the photo
-              //if there is no results inform user about that
+            
+            
               if (results.length == 0) {
-
+                  photo_url='';  
+                  document.getElementById('photo').style = ' background-image: url("' + photo_url + ' ");'; // default photo
                   document.getElementById("konsole").innerHTML = ' <p  class="alert alert-info" role="alert"> Nothing to show here - click somwhere else on the map </p>'
+                //  map.setZoom(5);
                   document.getElementById("gresults").style = "display:none;";
-                  document.getElementById("info-content").style = "display:none;";
+               
                   clearResults();
                   clearMarkers();
               } else {
@@ -231,6 +246,7 @@
                   clearMarkers();
                   // Create a marker for each attraction found, and
                   // assign a letter of the alphabetic to each marker icon.
+                  
                   for (var i = 0; i < results.length; i++) {
                       var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
                       var markerIcon = MARKER_PATH + markerLetter + '.png';
@@ -245,17 +261,24 @@
 
                       markers[i].placeResult = results[i];
                       google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-                      setTimeout(dropMarker(i), i * 100);
+                      
+                    //  console.log( markers[results.length]!=undefined)
+                      if (true) {
+                      setTimeout(dropMarker(i), i * 100); 
+                      
                       addResult(results[i], i);
+                    }
                   }
+                
               }
           });
+         
       }
 
       function clearMarkers() {
           for (var i = 0; i < markers.length; i++) {
               if (markers[i]) {
-                  markers[i].setMap(null);
+                markers[i].setMap(null);
               }
           }
           markers = [];
@@ -264,6 +287,10 @@
       // Set the country restriction based on user input.
       // Also center and zoom the map on the given country.
       function setAutocompleteCountry() {
+          //clear previous search, 
+          document.getElementById('autocomplete').value = '';
+          document.getElementById('autocomplete').place_id = 'Enter a city';
+
           var country = document.getElementById('country').value;
           if (country == 'all') {
               autocomplete.setComponentRestrictions({
@@ -273,7 +300,7 @@
                   lat: 15,
                   lng: 0
               });
-              map.setZoom(2);
+              map.setZoom(15);
           } else {
               autocomplete.setComponentRestrictions({
                   'country': country
@@ -282,6 +309,9 @@
               map.setZoom(countries[country].zoom);
           }
           clearResults();
+          arrPhoto_url = [];
+          photo_url = 'https://cdn.geckoandfly.com/wp-content/uploads/2017/07/travel-quotes-adventure-01-830x467.jpg'; //set default photo
+          //photo_url='';
           document.getElementById("gresults").style = "display:none;"
           clearMarkers();
       }
@@ -289,6 +319,8 @@
       function dropMarker(i) {
           return function () {
               markers[i].setMap(map);
+              //console.log(markers[0])
+              
           };
 
       }
@@ -346,7 +378,7 @@
 
       // Load the place information into the HTML elements used by the info window.
       let n = 0;
-      let nmax = 9;
+      let nmax = 0;
 
       function prev() {
           if (n > 0) {
@@ -356,22 +388,41 @@
           if (arrPhoto_url != "") {
               document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
           }
+          if (n === 0) {
+              document.getElementById('prev').disabled = true;
+          }
+          if (n < nmax - 1) {
+              document.getElementById('next').disabled = false;
+          }
       }
 
       function next() {
           if (n < nmax - 1) {
               n++;
           }
-          console.log("n=:", n, "arrPhoto_url:", arrPhoto_url[n]);
           if (arrPhoto_url != "") {
               document.getElementById('photo').style = ' background-image: url("' + arrPhoto_url[n] + ' ");';
+          }
+          if (n > 0) {
+              document.getElementById('prev').disabled = false;
+          }
+          if (n === nmax - 1) {
+              document.getElementById('next').disabled = true;
           }
       }
 
       function buildIWContent(place) {
           // store number of photos 
           //show picture of current attraction
+          if (place.photos == undefined) {
+              document.getElementById('next').disabled = true;
+              document.getElementById('prev').disabled = true;
+          } else {
+              if (n != 0) document.getElementById('prev').disabled = false;
+              document.getElementById('next').disabled = false;
+              nmax = place.photos.length;
 
+          }
 
           if (place.photos != undefined) {
               nmax = place.photos.length;
@@ -384,9 +435,12 @@
 
 
           } else {
-              //     console.log('Error not loaded a picture', n)  
-              console.log(place);
-              
+              nmax = 0;
+              arrPhoto_url = []
+              photo_url = 'https://cdn.geckoandfly.com/wp-content/uploads/2017/07/travel-quotes-adventure-01-830x467.jpg'; //default url
+              console.log('Error not loaded a picture', n)
+              // console.log(place);
+
               //  photo_url=['https://png.icons8.com/ios/1600/no-camera.png'] 
           }
 

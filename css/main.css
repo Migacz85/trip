@@ -29,6 +29,14 @@ h2 {
   font-family: 'Cinzel', cursive, sans-serif;
 }
 
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
 
 
 .main-header-tool h2 {
@@ -321,6 +329,7 @@ footer ul li {
 .row {
   background-color: #a99271;
   height: 100%;
+  
 }
 
 .col {

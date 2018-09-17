@@ -204,6 +204,8 @@ nav ul li {
 }
 
 .page-title {
+  margin-left: 10px;
+  margin-right: 10px;
   text-align: center;
   text-shadow: 0px 0px 5px black,
     0px 0px 5px black,

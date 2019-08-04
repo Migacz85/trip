@@ -2,8 +2,8 @@
 #menuToggle {
   display: block;
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 11px;
+  left: 5px;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
@@ -106,7 +106,8 @@
 
 
 #menu li {
-  padding: 0px 0;
+  margin-left:20px;
+  padding: 0 0;
   font-size: 22px;
 }
 

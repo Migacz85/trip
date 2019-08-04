@@ -1,6 +1,7 @@
 /* tags */
-
-
+html {
+  scroll-behavior: smooth;
+}
 h1,
 h2,
 h3, fieldset {

@@ -51,9 +51,6 @@ ul {
   color: black;
 }
 
-.sel1 {
-  display: block;
-}
 nav span {
   font-size: 2em;
   color: white;
@@ -108,7 +105,7 @@ main {
 .selected,
 .selected li {
   background-color: rgb(212, 46, 41);
-border-radius: 10px;
+  border-radius: 10px;
   text-decoration: none;
   color: white;
 }
@@ -185,7 +182,7 @@ nav ul li {
 }
 
 .main-header {
-  ;
+  text-shadow: 0 0 20px black;
   background-image: url("../pic/barcelona.jpg");
   background-size: cover;
   background-repeat: no-repeat;

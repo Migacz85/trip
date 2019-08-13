@@ -19,7 +19,10 @@ table {
     overflow: hidden;
   
 }
-
+option {
+    background-color: aqua;
+    display:block;
+}
 main {
     background-color:#a5a5a5;
 }
@@ -85,6 +88,7 @@ input {
     margin-top: 20px;
     margin-bottom: 0px;
     color: black;
+    display:block;
 }
 
 #autocomplete {
